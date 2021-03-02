@@ -21,7 +21,7 @@ public class PedidoController {
 	PedidoRepository pedidoRepository;
 	
 	@GetMapping("formulario")
-	public ModelAndView formulario() {
+	public ModelAndView formulario(PedidoDTO pedidoDto) {
 		ModelAndView mv = new ModelAndView("pedido/formulario");
 		return mv;
 	}
