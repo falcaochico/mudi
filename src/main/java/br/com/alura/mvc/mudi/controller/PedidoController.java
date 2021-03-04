@@ -28,12 +28,10 @@ public class PedidoController {
 	
 	@PostMapping("novo")
 	public String novo(@Valid PedidoDTO pedidoDto, BindingResult result) {
-		
 		if(result.hasErrors()) {
 			return "pedido/formulario";
 		}
-		
 		pedidoRepository.save(pedidoDto.toEntity());
-		return "pedido/formulario";
+		return "redirect:/home";
 	}
 }
