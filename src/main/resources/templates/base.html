@@ -21,12 +21,20 @@
 		  background-color: #e9ecef;
 		  border-radius: .3rem;
 		}
+		.pagerLink {
+		    text-decoration: none !important;
+		}
+		
 	</style>
 </head>
 
 <div th:fragment="logo" class="logo-container mb-3 p-3 d-flex justify-content-between">
 	<span class="logo">mudi</span>
-	<span class="mt-3">login</span>
+	<span class="mt-3">
+		<a sec:authorize="!isAuthenticated()" class="text-light pagerLink" href="/login">login</a>
+		<a sec:authorize="isAuthenticated()" onClick="document.querySelector('#form-login').submit()" class="text-light pagerLink" href="#">logout</a>
+		<form id="form-login" th:action="@{/logout}" method="post"></form>
+	</span>
 </div>
 
 <div th:fragment="titulo(valor)" class="jumbotron mb-0">
