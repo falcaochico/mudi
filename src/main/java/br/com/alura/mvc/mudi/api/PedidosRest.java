@@ -23,7 +23,7 @@ public class PedidosRest {
 	@GetMapping("aguardando")
 	public List<Pedido> getPedidosAguardandoOfertas(){
 		Sort sort = Sort.by("id").descending();
-		PageRequest paginacao = PageRequest.of(0, 10, sort);
+		PageRequest paginacao = PageRequest.of(0, 1, sort);
 		
 		return pedidoRepository.findByStatusPedido(StatusPedido.AGUARDANDO, paginacao);
 	}

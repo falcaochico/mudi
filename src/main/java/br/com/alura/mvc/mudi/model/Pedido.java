@@ -3,7 +3,6 @@ package br.com.alura.mvc.mudi.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Pedido {
@@ -30,6 +31,7 @@ public class Pedido {
 	@Enumerated(EnumType.STRING)
 	private StatusPedido statusPedido;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 	
