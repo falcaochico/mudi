@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		            .defaultSuccessUrl("/usuario/home",true)
 		            .permitAll()
 		        )
+				.csrf().disable()
 				.logout(logout -> {
 					logout.logoutUrl("/logout")
 						.logoutSuccessUrl("/home");
