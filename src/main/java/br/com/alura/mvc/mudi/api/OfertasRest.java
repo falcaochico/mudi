@@ -2,15 +2,15 @@ package br.com.alura.mvc.mudi.api;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.mvc.mudi.dto.OfertaDTO;
-import br.com.alura.mvc.mudi.dto.PedidoDTO;
 import br.com.alura.mvc.mudi.model.Oferta;
 import br.com.alura.mvc.mudi.model.Pedido;
 import br.com.alura.mvc.mudi.repository.PedidoRepository;
@@ -23,7 +23,7 @@ public class OfertasRest {
 	PedidoRepository pedidoRepository;
 	
 	@PostMapping
-	public Oferta criaOferta(@RequestBody OfertaDTO ofertaDto) {
+	public Oferta criaOferta(@Valid @RequestBody OfertaDTO ofertaDto) {
 		
 		Optional<Pedido> pedidoCadastrado = pedidoRepository.findById(ofertaDto.getIdPedido());
 		if(pedidoCadastrado.isEmpty()) {
